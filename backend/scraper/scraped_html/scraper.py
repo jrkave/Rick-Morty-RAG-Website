@@ -104,7 +104,7 @@ def get_html(dict, base_dir, new_dir, base_url):
             except requests.exceptions.RequestException as request_error:
                 print(f'Request error for {base_url + item}: {request_error}')
             except IOError as IO_error:
-                print(f'Error writing to file for {base_url + item}: {IOError}')
+                print(f'Error writing to file for {base_url + item}: {IO_error}')
                 
 if __name__ == '__main__':
     get_html(info, base_dir, 'html_pages', base_url)
