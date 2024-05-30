@@ -1,23 +1,23 @@
 import os
 from dotenv import load_dotenv
-import tiktoken
 from langchain_openai.chat_models import ChatOpenAI
 from langchain_core.output_parsers import StrOutputParser
 from langchain.prompts import ChatPromptTemplate
 from langchain_openai.embeddings import OpenAIEmbeddings
-from langchain_core.runnables import RunnableParallel, RunnablePassthrough
+from langchain_core.runnables import RunnablePassthrough
 from langchain_pinecone import PineconeVectorStore
-from langchain_community.document_loaders import TextLoader
-from langchain.text_splitter import RecursiveCharacterTextSplitter
-from pinecone import Pinecone, ServerlessSpec
 
 load_dotenv()
 
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 PINECONE_API_KEY = os.getenv("PINECONE_API_KEY")
 
-# Define LLM model and parser
-llm_model = ChatOpenAI(openai_api_key=OPENAI_API_KEY, model='gpt-3.5-turbo')
+embeddings = OpenAIEmbeddings(api_key=OPENAI_API_KEY, model='text-embedding-3-small')
+index_name = 'rm-index'
+vector_store = PineconeVectorStore(index_name=index_name, embedding=embeddings)
+
+# Define LLM model and output parser 
+model = ChatOpenAI(openai_api_key=OPENAI_API_KEY, model='gpt-3.5-turbo')
 parser = StrOutputParser()
 
 # Set up template for prompt
@@ -31,3 +31,17 @@ Question: {question}
 """
 
 prompt = ChatPromptTemplate.from_template(template)
+
+chain = (
+    {"context": vector_store.as_retriever(), "question": RunnablePassthrough()}
+    | prompt
+    | model
+    | parser
+)
+
+def chat(query):
+    return chain.invoke(query)
+
+if __name__ == '__main__':
+    response = chain.invoke('Does Rick know what a Plumbus is for?')
+    print(response)

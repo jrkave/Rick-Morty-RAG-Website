@@ -25,7 +25,7 @@ def clean_text(text):
 def split_text(text):
     # Determine how to split 
     text_splitter = RecursiveCharacterTextSplitter(
-        chunk_size=1000,
+        chunk_size=3000,
         chunk_overlap=20
     )
 
@@ -70,19 +70,15 @@ if __name__ == '__main__':
     for file in file_paths:
         texts.append(get_text(file))
     
-    # Combine all text into one string
-    complete_text = ''.join(texts)
-
-    # Split text into documents 
-    documents = split_text(complete_text)
-
     # Embeddings setup
     embeddings = OpenAIEmbeddings(api_key=OPENAI_API_KEY, model='text-embedding-3-small')
 
-    # Pinecone setup and upsert
     index_name = 'rm-index'
-    vector_store_from_texts = PineconeVectorStore.from_documents(
-        documents,
-        index_name=index_name,
-        embedding=embeddings
-    )
+    vector_store = PineconeVectorStore(index_name=index_name, embedding=embeddings)
+
+    for text in texts:
+        try:
+            documents = split_text(text)
+            vector_store.add_documents(documents)
+        except:
+            print('Error upserting text into Pinecone.')
