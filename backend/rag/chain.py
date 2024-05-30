@@ -40,8 +40,10 @@ chain = (
 )
 
 def chat(query):
-    return chain.invoke(query)
+    return f'Question: {query}\nResponse: {chain.invoke(query)}\n'
 
 if __name__ == '__main__':
-    response = chain.invoke('Does Rick know what a Plumbus is for?')
-    print(response)
+    print(chat('Does Rick know what a Plumbus is used for?'))
+    print(chat('What happens in the episode Bethic Twinstinct?'))
+    print(chat('Does Rick equate himself with a God?'))
+    print(chat('What is the name of the President?'))
