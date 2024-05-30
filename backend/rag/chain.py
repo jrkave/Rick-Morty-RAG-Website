@@ -47,3 +47,4 @@ if __name__ == '__main__':
     print(chat('What happens in the episode Bethic Twinstinct?'))
     print(chat('Does Rick equate himself with a God?'))
     print(chat('What is the name of the President?'))
+    print(chat('Do you like Rick? Answer like you are Jerry.'))
