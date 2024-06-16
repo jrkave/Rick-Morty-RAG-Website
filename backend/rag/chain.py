@@ -43,8 +43,6 @@ def chat(query):
     return f'Question: {query}\nResponse: {chain.invoke(query)}\n'
 
 if __name__ == '__main__':
-    print(chat('Does Rick know what a Plumbus is used for?'))
-    print(chat('What happens in the episode Bethic Twinstinct?'))
-    print(chat('Does Rick equate himself with a God?'))
-    print(chat('What is the name of the President?'))
-    print(chat('Do you like Rick? Answer like you are Jerry.'))
+    print(chat('How does Rick know Birdperson?'))
+    print(chat('Who is Poopybutthole? Where did he come from?'))
+    print(chat('How does Rick die?'))
