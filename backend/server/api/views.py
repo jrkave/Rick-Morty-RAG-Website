@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.contrib.auth.models import User
 from rest_framework import generics
 from .serializers import UserSerializer, ProfileSerializer, EpisodeCommentSerializer, EpisodeLikeSerializer, CharacterCommentSerializer, CharacterLikeSerializer
@@ -13,8 +12,8 @@ class CreateUserView(generics.CreateAPIView):
     permission_classes = [AllowAny]
 
 # LIST / CREATE VIEWS
-class BaseListViewSet(generics.ListCreateAPIView):
-    """ Base ViewSet for listing the queryset of or creating a new model. """
+class BaseListView(generics.ListCreateAPIView):
+    """ Base view for listing the queryset of or creating a new model. """
     
     permission_classes = [IsAuthenticated]
 
@@ -24,19 +23,19 @@ class BaseListViewSet(generics.ListCreateAPIView):
         else:
             print(serializer.errors)
 
-class EpisodeCommentListCreate(BaseListViewSet):
+class EpisodeCommentListCreate(BaseListView):
     queryset = Episode_Comment.objects.all()
     serializer_class = EpisodeCommentSerializer
 
-class EpisodeLikeListCreate(BaseListViewSet):
+class EpisodeLikeListCreate(BaseListView):
     queryset = Episode_Like.objects.all()
     serializer_class = EpisodeLikeSerializer
 
-class CharacterCommentListCreate(BaseListViewSet):
+class CharacterCommentListCreate(BaseListView):
     queryset = Character_Comment.objects.all()
     serializer_class = CharacterCommentSerializer
 
-class CharacterLikeListCreate(BaseListViewSet):
+class CharacterLikeListCreate(BaseListView):
     queryset = Character_Like.objects.all()
     serializer_class = CharacterLikeSerializer
 
