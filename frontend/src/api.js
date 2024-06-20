@@ -22,5 +22,5 @@ api.interceptors.request.use(
     }
 )
 
-{/* Use this api object (rather than axios) to send all requests) */}
+{/* Use this api object (rather than axios) to send all requests with tokens) */}
 export default api
