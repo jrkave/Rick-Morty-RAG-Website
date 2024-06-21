@@ -31,26 +31,35 @@ function Form({ route, method }) {
         }
     };
 
-    return <form onSubmit={handleSubmit} class='form-container'>
-        <h1>{name}</h1>
-        <input
-            className='form-input'
-            type='text'
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            placeholder="Username"
-        />
-        <input
-            className='form-input'
-            type='password'
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Password"
-        />
-        <button className='form-button' type='submit'>
-            {name}
-        </button>
-    </form>
+    return (
+        <div className='flex flex-col items-center justify-center text-center h-screen'>
+            <div>
+                <p>Logo</p>
+            </div>
+            <div className='px-24'>
+                <h2 className='py-16 text-2xl font-bold'>Welcome back</h2>
+                <form onSubmit={handleSubmit} className='space-y-10 pb-20'>
+                    <div className='px-4'>
+                        <input
+                            className='form-input h-10 w-64 pl-2 rounded-md border'
+                            type='text'
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                            placeholder='Username'/>
+                    </div>
+                    <div className='px-4'>
+                        <input
+                            className='form-input h-10 w-64 pl-2 rounded-md border'
+                            type='password'
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            placeholder='Password'/>
+                    </div>
+                    <button type='submit' className='py-2 px-10 w-64 rounded-md bg-blue-400'>{name}</button>
+                </form>
+            </div>
+        </div>
+    );
 }
 
 export default Form

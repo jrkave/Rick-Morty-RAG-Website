@@ -3,8 +3,7 @@ import NavBar from '../components/NavBar'
 
 function Login() {
     return (
-        <div>
-            <NavBar/>
+        <div className='flex justify-center items-center h-screen'>
             <Form route='/api/token/' method='login'/>
         </div>
     );
