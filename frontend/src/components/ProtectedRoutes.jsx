@@ -6,17 +6,7 @@ import { useState, useEffect, useCallback } from "react";
 import { useAuth } from '../context/AuthProvider';
 
 function ProtectedRoute({ children }) {
-    const { isAuthorized, auth } = useAuth();
-
-    useEffect(() => {
-        console.log("Checking authorization...");
-        auth().catch(error => console.error("Authentication error:", error));
-    }, [auth]);  // Ensure auth is stable (not redefined on each render)
-
-
-    if (isAuthorized === null) {
-        return <div>Loading...</div>;
-    }
+    const { isAuthorized } = useAuth();
 
     return isAuthorized ? children : <Navigate to='/login' />;
 }
