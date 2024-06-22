@@ -6,6 +6,10 @@ body {
   background: radial-gradient(circle at bottom, navy 0, black 100%);
 }
 
+.geo-background {
+  z-index: -1;
+}
+
 .space {
   background: rgba(128, 0, 128, 0.1) center / 200px 200px round;
   border: 1px dashed purple;

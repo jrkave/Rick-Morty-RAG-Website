@@ -1,34 +1,40 @@
-import { useState } from 'react';
-import api from '../api';
+import { useState, useEffect } from 'react';
+// import api from '../api';
 import { useNavigate, Link } from 'react-router-dom';
-import { ACCESS_TOKEN, REFRESH_TOKEN } from '../constants';
+import { useAuth } from '../context/AuthProvider';
+// import { ACCESS_TOKEN, REFRESH_TOKEN } from '../constants';
 import { TbUfo } from 'react-icons/tb';
 
-function Form({ route, method }) {
-    const [username, setUsername] = useState('')
-    const [password, setPassword] = useState('')
-    const [loading, setLoading] = useState(false)
-    const navigate = useNavigate()
+function Form({ method }) {
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [loading, setLoading] = useState(false);
+    const navigate = useNavigate();
+    const { login, register, isAuthorized, error } = useAuth();
+
+    useEffect(() => {
+        if (isAuthorized) {
+            navigate('/');
+        }
+    }, [isAuthorized, navigate]);
 
     const name = method === 'login' ? 'Login' : 'Register'
 
     const handleSubmit = async (e) => {
-        setLoading(true);
         e.preventDefault();
+        setLoading(true);
 
-        try {
-            const res = await api.post(route, { username, password })
-            if (method === 'login') {
-                localStorage.setItem(ACCESS_TOKEN, res.data.access);
-                localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
-                navigate('/');
-            } else {
-                navigate('/login');
-            }
-        } catch (error) {
-            alert(error)
-        } finally {
-            setLoading(false)
+        if (method === 'login') {
+            await login(username, password);
+        }
+        if (method === 'register') {
+            await register(username, password);
+        }
+
+        setLoading(false);
+
+        if (!isAuthorized && error) {
+            alert(error);
         }
     };
 
@@ -48,7 +54,7 @@ function Form({ route, method }) {
                 <form onSubmit={handleSubmit} className='pb-20'>
                     <div className='mx-4 my-4'>
                         <input
-                            className='form-input h-10 w-64 pl-2 rounded-md border dark:bg-lightest dark:border-0 dark:text-white'
+                            className='form-input h-10 w-64 pl-2 rounded-md border dark:bg-lightest dark:border-0 dark:text-white bg-zinc-100'
                             type='text'
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
@@ -56,7 +62,7 @@ function Form({ route, method }) {
                     </div>
                     <div className='mx-4 mt-4 mb-1'>
                         <input
-                            className='form-input h-10 w-64 pl-2 rounded-md border dark:bg-lightest dark:border-0 dark:text-white'
+                            className='form-input h-10 w-64 pl-2 rounded-md border dark:bg-lightest dark:border-0 dark:text-white bg-zinc-100'
                             type='password'
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
@@ -74,4 +80,4 @@ function Form({ route, method }) {
     );
 }
 
-export default Form
+export default Form;

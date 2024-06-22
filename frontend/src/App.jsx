@@ -1,10 +1,12 @@
-import react from 'react'
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-import Login from './pages/Login'
-import Register from './pages/Register'
-import Home from './pages/Home'
-import NotFound from './pages/NotFound'
-import ProtectedRoute from './components/ProtectedRoutes'
+import react from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import Home from './pages/Home';
+import NotFound from './pages/NotFound';
+import ProtectedRoute from './components/ProtectedRoutes';
+import NavBar from './components/NavBar';
+import GeoBackground from './components/GeoBackground';
 
 function Logout() {
   localStorage.clear()
@@ -19,6 +21,8 @@ function RegisterAndLogout() {
 function App() {
   return (
     <BrowserRouter>
+    <GeoBackground/>
+    <NavBar/>
       <Routes>
         <Route
           path='/'
