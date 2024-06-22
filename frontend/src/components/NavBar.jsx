@@ -6,7 +6,7 @@ import {
 } from 'react-icons/fa';
 import '../images/portal.png';
 
-const NavBarr = () => {
+const NavBar = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleMenu = () => {
@@ -47,14 +47,16 @@ const ThemeIcon = () => {
     const [darkTheme, setDarkTheme] = useDarkMode();
     const handleMode = () => setDarkTheme(!darkTheme);
     return (
-    <span onClick={handleMode} className='block mt-1 px-2 py-1 cursor pointer sm:mt-0 sm:ml-2'>
+    <span onClick={handleMode}
+    className={`block mt-1 px-2 py-1 cursor-pointer sm:mt-0 sm:ml-2 rounded-full transition-shadow duration-300 ${darkTheme ? 'hover:shadow-aura-light' : 'hover:shadow-aura-dark'}`}
+    >
         {darkTheme ? (
-        <FaSun size='24' className='text-zinc-100 hover:text-yellow-500' />
+        <FaSun size='24' className='text-zinc-100'/>
         ) : (
-        <FaMoon size='24' className='text-zinc-700 hover:text-yellow-500' />
+        <FaMoon size='24' className='text-zinc-700'/>
         )}
     </span>
     );
 };
 
-export default NavBarr;
+export default NavBar;

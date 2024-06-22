@@ -23,6 +23,10 @@ export default {
         secondary: '#1C1E24',
         tertiary: '#16181D',
       },
+      boxShadow: {
+        'aura-light': '0 0 10px 5px rgba(255, 255, 255, 0.3)',
+        'aura-dark': '0 0 10px 5px rgba(22, 24, 29, 0.3)',
+      },
     },
   },
   plugins: [],
