@@ -25,7 +25,10 @@ export default {
       },
       boxShadow: {
         'aura-light': '0 0 10px 5px rgba(255, 255, 255, 0.3)',
-        'aura-dark': '0 0 10px 5px rgba(22, 24, 29, 0.3)',
+        'aura-dark': '0 0 10px 5px rgba(67, 56, 202, 0.3)',
+      },
+      backgroundImage: {
+        'portal-pattern': "url('./images/button.png')"
       },
     },
   },

@@ -1,7 +1,8 @@
-import { useState } from 'react'
-import api from '../api'
-import { useNavigate, Link } from 'react-router-dom'
-import { ACCESS_TOKEN, REFRESH_TOKEN } from '../constants'
+import { useState } from 'react';
+import api from '../api';
+import { useNavigate, Link } from 'react-router-dom';
+import { ACCESS_TOKEN, REFRESH_TOKEN } from '../constants';
+import { TbUfo } from 'react-icons/tb';
 
 function Form({ route, method }) {
     const [username, setUsername] = useState('')
@@ -36,7 +37,7 @@ function Form({ route, method }) {
         bg-white border dark:bg-lighter dark:border-lightest
         shadow-md rounded-md'>
             <div>
-                <p className='mb-24 dark:text-zinc-200'>Logo</p>
+                <TbUfo className='text-4xl mb-20 text-green-600 dark:text-green-500'/>
             </div>
             <div>
                 {method === 'login' ? (
@@ -62,11 +63,11 @@ function Form({ route, method }) {
                             placeholder='Password'/>
                     </div>
                     {method === 'login' ? (
-                        <p className='text-sm w-64 mb-10 pl-2 text-zinc-700 dark:text-zinc-100'>Don't have an account? Register <Link className='underline' to='/register'>here</Link>.</p>
+                        <p className='text-sm w-64 mb-10 pl-2 text-zinc-700 dark:text-zinc-100'>Don't have an account? Register <Link className='underline text-indigo-500 hover:text-indigo-800 dark:text-indigo-300 dark:hover:text-indigo-400' to='/register'>here</Link>.</p>
                     ) : (
-                        <p className='text-sm w-64 mb-10 pl-2 text-zinc-700 dark:text-zinc-100'>Already have an account? Login <Link className='underline' to='/login'>here</Link>.</p>
+                        <p className='text-sm w-64 mb-10 pl-2 text-zinc-700 dark:text-zinc-100'>Already have an account? Login <Link className='underline text-indigo-500 hover:text-indigo-800 dark:text-indigo-300 dark:hover:text-indigo-400' to='/login'>here</Link>.</p>
                     )}
-                    <button type='submit' className='py-2 w-64 rounded-md bg-cyan-600 dark:bg-cyan-800 text-white font-semibold hover:bg-opacity-70 dark:hover:bg-opacity-70'>{name}</button>
+                    <button type='submit' className='py-2 w-64 rounded-md bg-indigo-600 dark:bg-indigo-700 text-white font-semibold hover:bg-opacity-70 dark:hover:bg-opacity-70'>{name}</button>
                 </form>
             </div>
         </div>
