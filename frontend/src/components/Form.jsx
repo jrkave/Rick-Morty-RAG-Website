@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import api from '../api'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { ACCESS_TOKEN, REFRESH_TOKEN } from '../constants'
 
 function Form({ route, method }) {
@@ -32,30 +32,41 @@ function Form({ route, method }) {
     };
 
     return (
-        <div className='flex flex-col items-center justify-center text-center h-screen'>
+        <div className='flex flex-col items-center justify-center text-center px-12 py-10 
+        bg-white border dark:bg-lighter dark:border-lightest
+        shadow-md rounded-md'>
             <div>
-                <p>Logo</p>
+                <p className='mb-24 dark:text-zinc-200'>Logo</p>
             </div>
-            <div className='px-24'>
-                <h2 className='py-16 text-2xl font-bold'>Welcome back</h2>
-                <form onSubmit={handleSubmit} className='space-y-10 pb-20'>
-                    <div className='px-4'>
+            <div>
+                {method === 'login' ? (
+                    <h1 className='text-2xl mb-12 font-bold dark:text-zinc-100'>Welcome back</h1>
+                    ) : (
+                    <h1 className='text-2xl mb-12 font-bold dark:text-zinc-100'>Welcome</h1>
+                )}
+                <form onSubmit={handleSubmit} className='pb-20'>
+                    <div className='mx-4 my-4'>
                         <input
-                            className='form-input h-10 w-64 pl-2 rounded-md border'
+                            className='form-input h-10 w-64 pl-2 rounded-md border dark:bg-lightest dark:border-0 dark:text-white'
                             type='text'
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
                             placeholder='Username'/>
                     </div>
-                    <div className='px-4'>
+                    <div className='mx-4 mt-4 mb-1'>
                         <input
-                            className='form-input h-10 w-64 pl-2 rounded-md border'
+                            className='form-input h-10 w-64 pl-2 rounded-md border dark:bg-lightest dark:border-0 dark:text-white'
                             type='password'
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             placeholder='Password'/>
                     </div>
-                    <button type='submit' className='py-2 px-10 w-64 rounded-md bg-blue-400'>{name}</button>
+                    {method === 'login' ? (
+                        <p className='text-sm w-64 mb-10 pl-2 text-zinc-700 dark:text-zinc-100'>Don't have an account? Register <Link className='underline' to='/register'>here</Link>.</p>
+                    ) : (
+                        <p className='text-sm w-64 mb-10 pl-2 text-zinc-700 dark:text-zinc-100'>Already have an account? Login <Link className='underline' to='/login'>here</Link>.</p>
+                    )}
+                    <button type='submit' className='py-2 w-64 rounded-md bg-cyan-600 dark:bg-cyan-800 text-white font-semibold hover:bg-opacity-70 dark:hover:bg-opacity-70'>{name}</button>
                 </form>
             </div>
         </div>
