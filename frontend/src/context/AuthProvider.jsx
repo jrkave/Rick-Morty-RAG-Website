@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useCallback } from 'react';
+import { createContext, useContext, useState, useEffect } from 'react';
 import { jwtDecode } from "jwt-decode";
 import api from '../api';
 import { REFRESH_TOKEN, ACCESS_TOKEN } from '../constants';
@@ -9,6 +9,10 @@ export function AuthProvider({children}) {
     const [user, setUser] = useState(null);
     const [error, setError] = useState('');
     const [isAuthorized, setIsAuthorized] = useState(null);
+
+    useEffect(() => {
+        auth();
+    }, []);
 
     const login = async (username, password) => {
         try {
