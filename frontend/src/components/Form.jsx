@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react';
-// import api from '../api';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthProvider';
-// import { ACCESS_TOKEN, REFRESH_TOKEN } from '../constants';
 import { TbUfo } from 'react-icons/tb';
 
 function Form({ method }) {

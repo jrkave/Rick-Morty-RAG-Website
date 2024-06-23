@@ -71,7 +71,7 @@ export function AuthProvider({children}) {
 
         // Token absent
         if (!token) {
-            setError('No token found.');
+            setError('');
             setIsAuthorized(null);
             setUser(null);
             return;
