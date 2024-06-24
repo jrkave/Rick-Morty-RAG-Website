@@ -4,6 +4,7 @@ import { FaMoon, FaSun } from 'react-icons/fa';
 import { TbUfo } from 'react-icons/tb';
 import { useAuth } from '../context/AuthProvider';
 import { FaAngleDown } from 'react-icons/fa6';
+import { Link } from 'react-router-dom';
 
 const NavBar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -52,12 +53,18 @@ const NavBar = () => {
                 </div>
             </div>
             <div className={`px-2 pt-2 pb-4 sm:block ${menuOpen ? 'block' : 'hidden'} sm:flex sm:p-0`}>
-                <a href='#' className='block px-2 py-1 font-semibold hover:bg-zinc-200 dark:hover:bg-lightest rounded-md text-green-600 dark:text-green-500 '>Home</a>
-                <a href='#' className='block mt-1 px-2 py-1 font-semibold text-gray-700 hover:bg-zinc-200 dark:text-zinc-100 dark:hover:bg-lightest rounded-md sm:mt-0 sm:ml-2 hover:text-green-600 hover:dark:text-green-500'>Characters</a>
+                <Link to='/' className='block px-2 py-1 font-semibold hover:bg-zinc-200 dark:hover:bg-lightest rounded-md text-green-600 dark:text-green-500'>Home</Link>
+                {isAuthorized ?
+                    <Link to='/profile' className='block mt-1 px-2 py-1 font-semibold text-gray-700 hover:bg-zinc-200 dark:text-zinc-100 dark:hover:bg-lightest rounded-md sm:mt-0 sm:ml-2 hover:text-green-600 hover:dark:text-green-500'>Profile</Link> : <></>
+                }
+                <Link to='/characters' className='block mt-1 px-2 py-1 font-semibold text-gray-700 hover:bg-zinc-200 dark:text-zinc-100 dark:hover:bg-lightest rounded-md sm:mt-0 sm:ml-2 hover:text-green-600 hover:dark:text-green-500'>Characters</Link>
                 {/* Dropdown above 'sm' sizes */}
                 <div className={`${!menuOpen ? 'block' : 'hidden'} relative block mt-1 px-2 py-1 w-28 font-semibold text-gray-700 hover:bg-zinc-200 dark:text-zinc-100 dark:hover:bg-lightest rounded-md sm:mt-0 sm:ml-2 hover:text-green-600 hover:dark:text-green-500`}>
-                    <button type='button' onClick={toggleDropDown}>Episodes<FaAngleDown className='inline-block ml-2 2x'/></button>
-                    <div className={`absolute left-0 mt-2 px-2 py-1 pt-2 pb-2 bg-white dark:bg-lighter rounded-md ${dropdownOpen ? 'block' : 'hidden'}`}>
+                    <div className='flex justify-evenly items-center' onClick={toggleDropDown}>
+                        <Link to='/episodes' className='mr-2'>Episodes</Link>
+                        <FaAngleDown/>
+                    </div>
+                    <div className={`${dropdownOpen ? 'block' : 'hidden'} absolute left-0 mt-2 px-2 py-1 pt-2 pb-2 bg-white dark:bg-lighter rounded-md border-b border-l border-r dark:border-gray-600`}>
                         <a href='#' className='block px-2 py-1 rounded-md font-semibold text-gray-600 hover:bg-zinc-200 dark:text-zinc-400 dark:hover:bg-lightest hover:text-green-600 hover:dark:text-green-500'>Season 1</a>
                         <a href='#' className='block px-2 py-1 rounded-md font-semibold text-gray-600 hover:bg-zinc-200 dark:text-zinc-400 dark:hover:bg-lightest hover:text-green-600 hover:dark:text-green-500'>Season 2</a>
                         <a href='#' className='block px-2 py-1 rounded-md font-semibold text-gray-600 hover:bg-zinc-200 dark:text-zinc-400 dark:hover:bg-lightest hover:text-green-600 hover:dark:text-green-500'>Season 3</a>
@@ -80,9 +87,10 @@ const NavBar = () => {
                         <a href='#' className='block px-2 py-1 ml-3 rounded-md font-semibold text-gray-600 hover:bg-zinc-200 dark:text-zinc-400 dark:hover:bg-lightest hover:text-green-600 hover:dark:text-green-500'>Season 7</a>
                     </div>
                 </div>
+                <Link to='/chat' className='block mt-1 px-2 py-1 font-semibold text-gray-700 hover:bg-zinc-200 dark:text-zinc-100 dark:hover:bg-lightest rounded-md sm:mt-0 sm:ml-2 hover:text-purple-600 hover:dark:text-purple-500'>Chat</Link>
                 {isAuthorized ? 
-                    <a href='#' onClick={logout} className='block mt-1 px-2 py-1 font-semibold text-gray-700 hover:bg-zinc-200 dark:text-zinc-100 dark:hover:bg-lightest rounded-md sm:mt-0 sm:ml-2 hover:text-green-600 hover:dark:text-green-500'>Logout</a> :
-                    <a href='#' className='block mt-1 px-2 py-1 font-semibold text-gray-700 hover:bg-zinc-200 dark:text-zinc-100 dark:hover:bg-lightest rounded-md sm:mt-0 sm:ml-2 hover:text-green-600 hover:dark:text-green-500'>Login</a> 
+                    <Link to='/logout' className='block mt-1 px-2 py-1 font-semibold text-gray-700 hover:bg-zinc-200 dark:text-zinc-100 dark:hover:bg-lightest rounded-md sm:mt-0 sm:ml-2 hover:text-green-600 hover:dark:text-green-500'>Logout</Link> :
+                    <Link to='/login' className='block mt-1 px-2 py-1 font-semibold text-gray-700 hover:bg-zinc-200 dark:text-zinc-100 dark:hover:bg-lightest rounded-md sm:mt-0 sm:ml-2 hover:text-green-600 hover:dark:text-green-500'>Login</Link> 
                 }
                 <ThemeIcon />
             </div>

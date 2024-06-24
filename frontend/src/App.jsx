@@ -7,16 +7,11 @@ import NotFound from './pages/NotFound';
 import ProtectedRoute from './components/ProtectedRoutes';
 import NavBar from './components/NavBar';
 import GeoBackground from './components/GeoBackground';
-
-function Logout() {
-  localStorage.clear()
-  return <Navigate to='/login' />
-}
-
-function RegisterAndLogout() {
-  localStorage.clear()
-  return <Register />
-}
+import Characters from './pages/Characters';
+import Episodes from './pages/Episodes';
+import Profile from './pages/Profile';
+import Logout from './components/Logout';
+import ChatBot from './pages/ChatBot';
 
 function App() {
   return (
@@ -24,17 +19,14 @@ function App() {
     <GeoBackground/>
     <NavBar/>
       <Routes>
-        <Route
-          path='/'
-          element={
-            <ProtectedRoute>
-              <Home />
-            </ProtectedRoute>
-          }
-        />
+        <Route path='/' element={<Home />}/>
         <Route path='/login' element={<Login />}/>
         <Route path='/logout' element={<Logout />}/>
-        <Route path='/register' element={<RegisterAndLogout />}/>
+        <Route path='/register' element={<Register />}/>
+        <Route path='/characters' element={<Characters />}/>
+        <Route path='/episodes' element={<Episodes />}/>
+        <Route path='/chat' element={<ChatBot />}/>
+        <Route path='/profile' element={<ProtectedRoute><Profile /></ProtectedRoute>}/>
         <Route path='*' element={<NotFound />}/>
       </Routes>
     </BrowserRouter>

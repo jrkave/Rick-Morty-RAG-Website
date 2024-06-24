@@ -37,6 +37,7 @@ export function AuthProvider({children}) {
     }
 
     const register = async (username, password) => {
+        localStorage.clear();
         try {
             const res = await api.post('api/user/register/', {username, password});
             login(username, password);

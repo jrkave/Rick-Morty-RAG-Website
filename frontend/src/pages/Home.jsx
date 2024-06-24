@@ -1,5 +1,5 @@
 function Home() {
-    return <div className='text-zinc-100'>Home</div>
+    return <div className='h-screen text-zinc-100'>Home</div>
 }
 
-export default Home
+export default Home;

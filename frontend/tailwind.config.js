@@ -22,6 +22,8 @@ export default {
         primary: '#24272E',
         secondary: '#1C1E24',
         tertiary: '#16181D',
+        rmtheme: '#489eb2',
+        rmthemebright: '#2faecb',
       },
       boxShadow: {
         'aura-light': '0 0 10px 5px rgba(255, 255, 255, 0.3)',
