@@ -1,6 +1,6 @@
 function ChatBot() {
     return (
-        <div className='text-white'>Chatbot</div>
+        <div className='text-white h-screen'>Chatbot</div>
     )
 }
 
