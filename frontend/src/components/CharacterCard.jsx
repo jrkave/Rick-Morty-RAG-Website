@@ -16,17 +16,17 @@ function CharacterCard({ character }) {
                 <section>
                     <div className='flex'>
                         <FontAwesomeIcon className='mr-2 fa-lg mt-1 text-blue-400 dark:text-blue-300' icon={faCircleInfo}/>
-                        <h1 className='text-gray-700 dark:text-zinc-100 text-xl font-bold'>{character.name}</h1> 
+                        <h1 className='text-gray-700 dark:text-zinc-200 text-xl font-bold'>{character.name}</h1> 
                     </div>
                     <p className='text-gray-700 dark:text-zinc-400 text-sm'><CircleStatus status={character.status} />{capitalizeFirstLetter(character.status)} - {capitalizeFirstLetter(character.species)}</p>
                 </section>
                 <section>
                     <p className='text-gray-700 dark:text-zinc-400 font-semibold'>Last Known Location:</p>
-                    <p className='text-gray-700 dark:text-zinc-100'>{character.location.name}</p>
+                    <p className='text-gray-700 dark:text-zinc-200'>{character.location.name}</p>
                 </section>
                 <section className='mb-8'>
                     <p className='text-gray-700 dark:text-zinc-400 font-semibold'>First Seen In:</p>
-                    <p className='text-gray-700 dark:text-zinc-100'>{character.first_appearance}</p>
+                    <p className='text-gray-700 dark:text-zinc-200'>{character.first_appearance}</p>
                 </section>
             </div>
             <div className='flex mx-4 pb-4 border-t-2 dark:border-zinc-600 pt-4'>
