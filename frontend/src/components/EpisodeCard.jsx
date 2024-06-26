@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { FaAngleDown } from 'react-icons/fa6';
-import image from '../images/pilot.jpg';
 
-function EpisodeCard() {
+function EpisodeCard({episode}) {
     const [isOpen, setIsOpen] = useState(false);
     const openDropDown = () => setIsOpen(!isOpen);
 
@@ -31,39 +30,21 @@ function EpisodeCard() {
     }
 
     function editCharactersString(charactersSeen) {
-        let characterString = '';
-
-        for (const character of charactersSeen) {
-            characterString += character + ', ';
-
-        }
-
-        characterString = characterString.slice(0, -2);
-
-        return characterString;
+        return charactersSeen.join(', ');
     }
 
-    const id = 1;
-    const name = 'Pilot';
-    const episode = 'S01EP01';
-    const dictionary = parseEpisodeString(episode);
-    const season = '1';
-    const airDate = 'May 31, 2013';
-    const charactersSeen = ['Rick Sanchez', 'Morty Smith', 'Beth Smith', 'Summer Smith', 'Jerry Smith'];
-
     return (
-        <div className='relative'>
         <div className='bg-white dark:bg-lighter rounded-md overflow-hidden m-6 w-full max-w-md relative'>
             <div>
-                <img src={image} className='h-64'></img>
+                <img src={`images/ep_${episode.id}.webp`} className='h-64'></img>
                 <div className='m-2'>
-                    <h1 className='text-gray-700 dark:text-zinc-200 text-xl font-bold'>{`Season ${dictionary.season} Episode ${dictionary.episode} : `}
-                        <span className='dark:text-zinc-400'>{`"${name}"`}</span>
+                    <h1 className='text-gray-700 dark:text-zinc-200 text-xl font-bold'>{`Season ${parseEpisodeString(episode.episode).season} Episode ${parseEpisodeString(episode.episode).episode} : `}
+                        <span className='dark:text-zinc-400'>{`"${episode.name}"`}</span>
                     </h1>
                     <div className='flex justify-between items-center'>
                         <div className='text-gray-700'>
                             <span className='font-bold dark:text-amber-500'>Aired on: </span>
-                            <span className='dark:text-zinc-100'>{airDate}</span>
+                            <span className='dark:text-zinc-100'>{episode.air_date}</span>
                         </div>
                         <div>
                             <FaAngleDown type='button' className='mr-1 mt-1 text-zinc-400 hover:text-zinc-200' onClick={openDropDown}/>
@@ -71,11 +52,10 @@ function EpisodeCard() {
                     </div>
                     <div className={`${isOpen ? 'block' : 'hidden'} mt-2 text-gray-700`}>
                         <span className='dark:text-zinc-400 font-semibold'>Featured Characters: </span>
-                        <span className='dark:text-zinc-100'>{editCharactersString(charactersSeen)}</span>
+                        <span className='dark:text-zinc-100'>{editCharactersString(episode.characters)}</span>
                     </div>
                 </div>
             </div>
-        </div>
         </div>
     );
 };
