@@ -120,17 +120,13 @@ function Episodes () {
         fetchData();
     }, []);
 
-    if (loading) {
-        return <div>Loading...</div>;
-    }
-
     if (error) {
         return <div>Error: {error}</div>;
     }
 
     return (
         <div className='h-screen'>
-            <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 justify-items-center'>
+            <div className='grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-2 justify-items-center m-4'>
                 {episodes.map(episode => (
                     <EpisodeCard key={episode.id} episode={episode}></EpisodeCard>
                 ))}
