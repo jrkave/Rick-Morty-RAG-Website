@@ -1,6 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
-import { faComment } from '@fortawesome/free-solid-svg-icons';
 import { FaPlus } from 'react-icons/fa6';
 import CircleStatus from './CircleStatus';
 
@@ -35,9 +34,9 @@ function CharacterCard({ character }) {
                     <p className='text-gray-700 dark:text-zinc-200'>{character.first_appearance}</p>
                 </section>
             </div>
-            <div className='flex mx-4 pb-4 border-t-2 dark:border-zinc-600 pt-4'>
-                <FontAwesomeIcon className='fa-button fa-lg mr-4 text-gray-600 dark:text-gray-400 hover:text-gray-800 hover:dark:text-amber-500' icon={faThumbsUp} role='button'/>
-                <FontAwesomeIcon className='fa-button fa-lg text-gray-600 dark:text-gray-400 hover:text-gray-800 hover:dark:text-amber-500' icon={faComment} role='button'/>
+            <div className='flex items-center mx-4 pb-4 border-t-2 dark:border-zinc-600 pt-4'>
+                <FontAwesomeIcon className='fa-button fa-lg mr-2 text-gray-600 dark:text-gray-400 hover:text-gray-800 hover:dark:text-amber-500' icon={faThumbsUp} role='button'/>
+                <p className='text-gray-700 dark:text-zinc-400'>15</p>
             </div>
         </div>
     );

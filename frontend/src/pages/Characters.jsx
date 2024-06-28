@@ -53,8 +53,8 @@ function Characters () {
     }, [baseUrl]);
 
     return (
-        <div className='h-screen'>
-            <div className='grid grid-cols-1 xs-1:grid-cols-2 xs-2:grid-cols-2 md-1:grid-cols-3 lg-1:grid-cols-4 xl-1:grid-cols-5 justify-items-center'>
+        <div className='h-screen my-4 mx-4'>
+            <div className='grid grid-cols-1 xs-1:grid-cols-2 md-1:grid-cols-3 lg-1:grid-cols-4 xl-1:grid-cols-5 justify-items-center'>
                 {characters.map(character => (
                     <CharacterCard key={character.id} character={character}></CharacterCard>
                 ))}
