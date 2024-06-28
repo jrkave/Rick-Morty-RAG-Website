@@ -6,6 +6,19 @@ export default {
   ],
   darkMode: 'class',
   theme: {
+    screens: {
+      'xs': '540px',
+      'xs-1': '590px',
+      'xs-2': '615px',
+      'sm': '640px',
+      'md': '768px',
+      'md-1': '905px',
+      'lg': '1024px',
+      'lg-1': '1210px',
+      'xl': '1280px',
+      'xl-1': '1480px',
+      '2xl': '1536px',
+    },
     fontSize: {
       sm: '0.8rem',
       base: '1rem',

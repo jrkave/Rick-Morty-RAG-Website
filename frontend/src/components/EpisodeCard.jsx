@@ -27,9 +27,7 @@ function EpisodeCard({episode}) {
         } else if (episode[1] === '1') {
             episode = episode.slice(0, 2);
         }
-
-        console.log(`apiEpisode: ${apiEpisode}, Rseason: ${season}, Repisode: ${episode}`)
-
+        
         value = {
             'season': season,
             'episode': episode,
@@ -53,7 +51,7 @@ function EpisodeCard({episode}) {
                     </div>
                     <FaPlus className='mr-2 text-gray-700 hover:text-gray-500 dark:text-zinc-400 dark:hover:text-zinc-200 fa-md' />
                 </div>
-                <h1 className='pl-2 pt-1 text-gray-700 dark:text-zinc-200 text-xl font-bold'>
+                <h1 className='mx-2 pt-1 text-gray-700 dark:text-zinc-200 text-xl font-bold'>
                     {`Season ${parseEpisodeString(episode.episode).season} Episode ${parseEpisodeString(episode.episode).episode}: `}
                     <span className="dark:text-zinc-400">{`"${episode.name}"`}</span>
                 </h1>
