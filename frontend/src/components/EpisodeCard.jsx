@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { FaAngleDown } from 'react-icons/fa6';
+import { FaPlus } from 'react-icons/fa6';
+import StarRating from './StarRating';
 
 function EpisodeCard({episode}) {
     const [isOpen, setIsOpen] = useState(false);
@@ -35,7 +37,14 @@ function EpisodeCard({episode}) {
     return (
         <div className='container bg-white dark:bg-lighter rounded-md m-2 flex flex-col justify-between'>
             <div>
-                <img src={`images/ep_${episode.id}.webp`} alt={`Episode ${episode.id}`} className='rounded-md' />
+                <img src={`/images/ep_${episode.id}.webp`} alt={`Episode ${episode.id}`} className='rounded-md' />
+                <div className='flex items-center justify-between mt-2'>
+                    <div className='flex items-center ml-2'>
+                        <StarRating />
+                        <p className='text-gray-700 dark:text-zinc-400 ml-2'>4.5</p>
+                    </div>
+                    <FaPlus className='mr-2 text-gray-700 hover:text-gray-500 dark:text-zinc-400 dark:hover:text-zinc-200 fa-md' />
+                </div>
                 <h1 className='pl-2 pt-1 text-gray-700 dark:text-zinc-200 text-xl font-bold'>
                     {`Season ${parseEpisodeString(episode.episode).season} Episode ${parseEpisodeString(episode.episode).episode}: `}
                     <span className="dark:text-zinc-400">{`"${episode.name}"`}</span>
@@ -49,7 +58,7 @@ function EpisodeCard({episode}) {
                 <div>
                     <FaAngleDown
                         type='button'
-                        className='mr-1 mt-1 text-zinc-400 hover:text-zinc-200'
+                        className='text-gray-700 hover:text-gray-500 dark:text-zinc-400 dark:hover:text-zinc-200 fa-md'
                         onClick={openDropDown}
                     />
                 </div>

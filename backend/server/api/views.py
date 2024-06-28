@@ -1,8 +1,8 @@
 from django.contrib.auth.models import User
 from rest_framework import generics
-from .serializers import UserSerializer, ProfileSerializer, EpisodeCommentSerializer, EpisodeLikeSerializer, CharacterCommentSerializer, CharacterLikeSerializer
+from .serializers import UserSerializer, ProfileSerializer, EpisodeCommentSerializer, EpisodeLikeSerializer, CharacterCommentSerializer, CharacterLikeSerializer, EpisodeRatingSerializer
 from rest_framework.permissions import IsAuthenticated, AllowAny, SAFE_METHODS
-from .models import Profile, Episode_Comment, Episode_Like, Character_Comment, Character_Like
+from .models import Profile, Episode_Comment, Episode_Like, Character_Comment, Character_Like, Episode_Rating
 # from .permissions import IsOwnerOrReadOnly
 
 # Create your views here.
@@ -38,6 +38,10 @@ class CharacterCommentListCreate(BaseListView):
 class CharacterLikeListCreate(BaseListView):
     queryset = Character_Like.objects.all()
     serializer_class = CharacterLikeSerializer
+
+class EpisodeRatingListCreate(BaseListView):
+    queryset = Episode_Rating.objects.all()
+    serializer_class = EpisodeRatingSerializer
 
 # RETRIEVE, UPDATE, DELETE VIEWS
 class BaseOwnerDetailView(generics.RetrieveUpdateDestroyAPIView):
@@ -75,4 +79,7 @@ class CharacterLikeDetail(BaseOwnerDetailView):
 class ProfileDetail(BaseOwnerDetailView):
     model = Profile
     serializer_class = ProfileSerializer
-    
+
+class EpisodeRatingDetail(BaseOwnerDetailView):
+    model = Episode_Rating
+    serializer_class = EpisodeRatingSerializer

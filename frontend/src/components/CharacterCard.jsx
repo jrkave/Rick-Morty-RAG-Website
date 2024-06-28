@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 import { faComment } from '@fortawesome/free-solid-svg-icons';
-import { faCircleInfo } from '@fortawesome/free-solid-svg-icons';
+import { FaPlus } from 'react-icons/fa6';
 import CircleStatus from './CircleStatus';
 
 function CharacterCard({ character }) {
@@ -10,13 +10,19 @@ function CharacterCard({ character }) {
     }
 
     return (
-        <div className='my-6 w-72 bg-white dark:bg-lighter rounded-xl overflow-hidden'>
-            <img src={character.image} className='mb-2'></img>
-            <div className='h-52 m-4 flex flex-col justify-between'>
+        <div className='my-3 w-72 bg-white dark:bg-lighter rounded-xl overflow-hidden'>
+            <div className='image-container w-full'>
+                <img src={character.image} className='mb-1 w-full h-full object-cover'></img>
+            </div>
+            <div className='h-52 ml-3 flex flex-col justify-between'>
                 <section>
-                    <div className='flex'>
-                        <FontAwesomeIcon className='mr-2 fa-lg mt-1 text-blue-400 dark:text-blue-300' icon={faCircleInfo}/>
-                        <h1 className='text-gray-700 dark:text-zinc-200 text-xl font-bold'>{character.name}</h1> 
+                    <div className='flex items-center justify-between'>
+                        <div>
+                            <h1 className='text-gray-700 dark:text-zinc-200 text-2xl font-bold'>{character.name}</h1> 
+                        </div>
+                        <div>
+                            <FaPlus className='mr-2 text-gray-700 hover:text-gray-500 dark:text-zinc-400 dark:hover:text-zinc-200 fa-md' />
+                        </div>
                     </div>
                     <p className='text-gray-700 dark:text-zinc-400 text-sm'><CircleStatus status={character.status} />{capitalizeFirstLetter(character.status)} - {capitalizeFirstLetter(character.species)}</p>
                 </section>

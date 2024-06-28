@@ -7,6 +7,8 @@ urlpatterns = [
     path('episodes/comments/<int:id>', views.EpisodeCommentDetail.as_view(), name='episode_comment_detail'),
     path('episodes/likes/', views.EpisodeLikeListCreate.as_view(), name='episode_like_list'),
     path('episodes/likes/<int:id>', views.EpisodeLikeDetail.as_view(), name='episode_like_detail'),
+    path('episodes/ratings/', views.EpisodeRatingListCreate.as_view(), name='episode_rating_list'),
+    path('episodes/ratings/<int:id>', views.EpisodeRatingDetail.as_view(), name='episode_rating_detail'),
 
     # URLs for characters
     path('characters/comments/', views.CharacterCommentListCreate.as_view(), name='character_comment_list'),
@@ -16,4 +18,5 @@ urlpatterns = [
 
     # URL for profiles
     path('profiles/<int:id>', views.ProfileDetail.as_view(), name='profile'),
+
 ]

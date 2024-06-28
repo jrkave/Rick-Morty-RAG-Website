@@ -61,30 +61,28 @@ const NavBar = () => {
                 {/* Dropdown above 'sm' sizes */}
                 <div className={`${!menuOpen ? 'block' : 'hidden'} relative block mt-1 px-2 py-1 w-28 font-semibold text-gray-700 hover:bg-zinc-200 dark:text-zinc-100 dark:hover:bg-lightest rounded-md sm:mt-0 sm:ml-2 hover:text-green-600 hover:dark:text-green-500`}>
                     <div className='flex justify-evenly items-center' onClick={toggleDropDown}>
-                        <Link to='/episodes' className='mr-2'>Episodes</Link>
+                        <div className='mr-2'>Episodes</div>
                         <FaAngleDown/>
                     </div>
-                    <div className={`${dropdownOpen ? 'block' : 'hidden'} absolute left-0 mt-2 px-2 py-1 pt-2 pb-2 bg-white dark:bg-lighter rounded-md border-b border-l border-r dark:border-gray-600`}>
-                        <a href='#' className='block px-2 py-1 rounded-md font-semibold text-gray-600 hover:bg-zinc-200 dark:text-zinc-400 dark:hover:bg-lightest hover:text-green-600 hover:dark:text-green-500'>Season 1</a>
-                        <a href='#' className='block px-2 py-1 rounded-md font-semibold text-gray-600 hover:bg-zinc-200 dark:text-zinc-400 dark:hover:bg-lightest hover:text-green-600 hover:dark:text-green-500'>Season 2</a>
-                        <a href='#' className='block px-2 py-1 rounded-md font-semibold text-gray-600 hover:bg-zinc-200 dark:text-zinc-400 dark:hover:bg-lightest hover:text-green-600 hover:dark:text-green-500'>Season 3</a>
-                        <a href='#' className='block px-2 py-1 rounded-md font-semibold text-gray-600 hover:bg-zinc-200 dark:text-zinc-400 dark:hover:bg-lightest hover:text-green-600 hover:dark:text-green-500'>Season 4</a>
-                        <a href='#' className='block px-2 py-1 rounded-md font-semibold text-gray-600 hover:bg-zinc-200 dark:text-zinc-400 dark:hover:bg-lightest hover:text-green-600 hover:dark:text-green-500'>Season 5</a>
-                        <a href='#' className='block px-2 py-1 rounded-md font-semibold text-gray-600 hover:bg-zinc-200 dark:text-zinc-400 dark:hover:bg-lightest hover:text-green-600 hover:dark:text-green-500'>Season 6</a>
-                        <a href='#' className='block px-2 py-1 rounded-md font-semibold text-gray-600 hover:bg-zinc-200 dark:text-zinc-400 dark:hover:bg-lightest hover:text-green-600 hover:dark:text-green-500'>Season 7</a>
+                    <div className={`${dropdownOpen ? 'block' : 'hidden'} absolute left-0 mt-2 px-2 py-1 pt-2 pb-2 bg-white dark:bg-lighter rounded-md border-b border-l border-r dark:border-gray-600 z-10`}>
+                        <Link to='/episodes/all' onClick={toggleDropDown} className='block px-2 py-1 rounded-md font-semibold text-gray-600 hover:bg-zinc-200 dark:text-zinc-400 dark:hover:bg-lightest hover:text-green-600 hover:dark:text-green-500'>All</Link>
+                        <Link to='/episodes/season_1' onClick={toggleDropDown} className='block px-2 py-1 rounded-md font-semibold text-gray-600 hover:bg-zinc-200 dark:text-zinc-400 dark:hover:bg-lightest hover:text-green-600 hover:dark:text-green-500'>Season 1</Link>
+                        <Link to='/episodes/season_2' onClick={toggleDropDown} className='block px-2 py-1 rounded-md font-semibold text-gray-600 hover:bg-zinc-200 dark:text-zinc-400 dark:hover:bg-lightest hover:text-green-600 hover:dark:text-green-500'>Season 2</Link>
+                        <Link to='/episodes/season_3' onClick={toggleDropDown} className='block px-2 py-1 rounded-md font-semibold text-gray-600 hover:bg-zinc-200 dark:text-zinc-400 dark:hover:bg-lightest hover:text-green-600 hover:dark:text-green-500'>Season 3</Link>
+                        <Link to='/episodes/season_4' onClick={toggleDropDown} className='block px-2 py-1 rounded-md font-semibold text-gray-600 hover:bg-zinc-200 dark:text-zinc-400 dark:hover:bg-lightest hover:text-green-600 hover:dark:text-green-500'>Season 4</Link>
+                        <Link to='/episodes/season_5' onClick={toggleDropDown} className='block px-2 py-1 rounded-md font-semibold text-gray-600 hover:bg-zinc-200 dark:text-zinc-400 dark:hover:bg-lightest hover:text-green-600 hover:dark:text-green-500'>Season 5</Link>
                     </div>
                 </div>
                 {/* No dropdown for 'sm' size */}
                 <div className={`${menuOpen ? 'block' : 'hidden'}`}>
                     <a href='#' className='block mt-1 px-2 py-1 font-semibold text-gray-700 hover:bg-zinc-200 dark:text-zinc-100 dark:hover:bg-lightest rounded-md sm:mt-0 sm:ml-2 hover:text-green-600 hover:dark:text-green-500'>Episodes</a>
                     <div>
-                        <a href='#' className='block px-2 py-1 ml-3 rounded-md font-semibold text-gray-600 hover:bg-zinc-200 dark:text-zinc-400 dark:hover:bg-lightest hover:text-green-600 hover:dark:text-green-500'>Season 1</a>
-                        <a href='#' className='block px-2 py-1 ml-3 rounded-md font-semibold text-gray-600 hover:bg-zinc-200 dark:text-zinc-400 dark:hover:bg-lightest hover:text-green-600 hover:dark:text-green-500'>Season 2</a>
-                        <a href='#' className='block px-2 py-1 ml-3 rounded-md font-semibold text-gray-600 hover:bg-zinc-200 dark:text-zinc-400 dark:hover:bg-lightest hover:text-green-600 hover:dark:text-green-500'>Season 3</a>
-                        <a href='#' className='block px-2 py-1 ml-3 rounded-md font-semibold text-gray-600 hover:bg-zinc-200 dark:text-zinc-400 dark:hover:bg-lightest hover:text-green-600 hover:dark:text-green-500'>Season 4</a>
-                        <a href='#' className='block px-2 py-1 ml-3 rounded-md font-semibold text-gray-600 hover:bg-zinc-200 dark:text-zinc-400 dark:hover:bg-lightest hover:text-green-600 hover:dark:text-green-500'>Season 5</a>
-                        <a href='#' className='block px-2 py-1 ml-3 rounded-md font-semibold text-gray-600 hover:bg-zinc-200 dark:text-zinc-400 dark:hover:bg-lightest hover:text-green-600 hover:dark:text-green-500'>Season 6</a>
-                        <a href='#' className='block px-2 py-1 ml-3 rounded-md font-semibold text-gray-600 hover:bg-zinc-200 dark:text-zinc-400 dark:hover:bg-lightest hover:text-green-600 hover:dark:text-green-500'>Season 7</a>
+                        <Link to='/episodes/all' onClick={toggleMenu} className='block px-2 py-1 ml-3 rounded-md font-semibold text-gray-600 hover:bg-zinc-200 dark:text-zinc-400 dark:hover:bg-lightest hover:text-green-600 hover:dark:text-green-500'>All</Link>
+                        <Link to='/episodes/season_1' onClick={toggleMenu} className='block px-2 py-1 ml-3 rounded-md font-semibold text-gray-600 hover:bg-zinc-200 dark:text-zinc-400 dark:hover:bg-lightest hover:text-green-600 hover:dark:text-green-500'>Season 1</Link>
+                        <Link to='/episodes/season_2' onClick={toggleMenu} className='block px-2 py-1 ml-3 rounded-md font-semibold text-gray-600 hover:bg-zinc-200 dark:text-zinc-400 dark:hover:bg-lightest hover:text-green-600 hover:dark:text-green-500'>Season 2</Link>
+                        <Link to='/episodes/season_3' onClick={toggleMenu} className='block px-2 py-1 ml-3 rounded-md font-semibold text-gray-600 hover:bg-zinc-200 dark:text-zinc-400 dark:hover:bg-lightest hover:text-green-600 hover:dark:text-green-500'>Season 3</Link>
+                        <Link to='/episodes/season_4' onClick={toggleMenu} className='block px-2 py-1 ml-3 rounded-md font-semibold text-gray-600 hover:bg-zinc-200 dark:text-zinc-400 dark:hover:bg-lightest hover:text-green-600 hover:dark:text-green-500'>Season 4</Link>
+                        <Link to='/episodes/season_5' onClick={toggleMenu} className='block px-2 py-1 ml-3 rounded-md font-semibold text-gray-600 hover:bg-zinc-200 dark:text-zinc-400 dark:hover:bg-lightest hover:text-green-600 hover:dark:text-green-500'>Season 5</Link>
                     </div>
                 </div>
                 <Link to='/chat' className='block mt-1 px-2 py-1 font-semibold text-gray-700 hover:bg-zinc-200 dark:text-zinc-100 dark:hover:bg-lightest rounded-md sm:mt-0 sm:ml-2 hover:text-purple-600 hover:dark:text-purple-500'>Chat</Link>

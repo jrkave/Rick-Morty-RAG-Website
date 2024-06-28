@@ -47,3 +47,9 @@ class Character_Comment(models.Model):
 
     def __str__(self):
         return self.content
+
+class Episode_Rating(models.Model):
+    id = models.AutoField(primary_key=True)
+    episode_id = models.IntegerField()
+    rating = models.IntegerField()
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)

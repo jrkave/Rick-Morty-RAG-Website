@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
-from .models import Profile, Episode_Comment, Episode_Like, Character_Comment, Character_Like
+from .models import Profile, Episode_Comment, Episode_Like, Character_Comment, Character_Like, Episode_Rating
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -41,4 +41,9 @@ class CharacterLikeSerializer(serializers.ModelSerializer):
         model = Character_Like
         fields = ['id', 'character_id', 'owner']
         extra_kwargs = {'owner': {'read_only': True}}
-
+    
+class EpisodeRatingSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Episode_Rating
+        fields = ['id', 'episode_id', 'rating', 'owner']
+        extra_kwards = {'owner': {'read_only': True}}

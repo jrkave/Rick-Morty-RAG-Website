@@ -54,7 +54,7 @@ function Characters () {
 
     return (
         <div className='h-screen'>
-            <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 justify-items-center'>
+            <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-items-center'>
                 {characters.map(character => (
                     <CharacterCard key={character.id} character={character}></CharacterCard>
                 ))}

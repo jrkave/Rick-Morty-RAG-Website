@@ -24,7 +24,12 @@ function App() {
         <Route path='/logout' element={<Logout />}/>
         <Route path='/register' element={<Register />}/>
         <Route path='/characters' element={<Characters />}/>
-        <Route path='/episodes' element={<Episodes />}/>
+        <Route path='/episodes/all' element={<Episodes />}/>
+        <Route path='/episodes/season_1' element={<Episodes season={1}/>}/>
+        <Route path='/episodes/season_2' element={<Episodes season={2}/>}/>
+        <Route path='/episodes/season_3' element={<Episodes season={3}/>}/>
+        <Route path='/episodes/season_4' element={<Episodes season={4}/>}/>
+        <Route path='/episodes/season_5' element={<Episodes season={5}/>}/>
         <Route path='/chat' element={<ChatBot />}/>
         <Route path='/profile' element={<ProtectedRoute><Profile /></ProtectedRoute>}/>
         <Route path='*' element={<NotFound />}/>
