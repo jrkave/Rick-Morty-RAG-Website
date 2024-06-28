@@ -44,7 +44,7 @@ function EpisodeCard({episode}) {
         <div className='container bg-white dark:bg-lighter rounded-md m-2 flex flex-col justify-between'>
             <div>
                 <img src={`/images/ep_${episode.id}.webp`} alt={`Episode ${episode.id}`} className='rounded-md' />
-                <div className='flex items-center justify-between mt-2'>
+                <div className='flex items-center justify-between mt-1'>
                     <div className='flex items-center ml-2'>
                         <StarRating />
                         <p className='text-gray-700 dark:text-zinc-400 ml-2'>4.5</p>
