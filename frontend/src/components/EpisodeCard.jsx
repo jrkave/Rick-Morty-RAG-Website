@@ -8,20 +8,28 @@ function EpisodeCard({episode}) {
     const openDropDown = () => setIsOpen(!isOpen);
       
     function parseEpisodeString(apiEpisode) {
+        // Format of apiEpisode: 'S00E00'
         let season;
         let episode;
+        let value;
 
         season = apiEpisode.slice(1,3);
-        episode = apiEpisode.slice(5,7);
+        episode = apiEpisode.slice(4,6);
 
         if (season[0] === '0') {
             season = season.slice(1);
-        }
-        if (episode[0] === '0') {
-            episode = episode.slice(1);
+        } else if (season[1] === '1') {
+            season = season.slice(1, 3);
         }
 
-        let value;
+        if (episode[0] === '0') {
+            episode = episode.slice(1);
+        } else if (episode[1] === '1') {
+            episode = episode.slice(0, 2);
+        }
+
+        console.log(`apiEpisode: ${apiEpisode}, Rseason: ${season}, Repisode: ${episode}`)
+
         value = {
             'season': season,
             'episode': episode,
