@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { FaPlus } from 'react-icons/fa6';
-import StarRating from './StarRating';
+import { PiCardsBold } from 'react-icons/pi';
+import HeartRating from './HeartRating';
 import CircleStatus from './CircleStatus';
 
 function CharacterCard({ character }) {
@@ -12,7 +13,7 @@ function CharacterCard({ character }) {
     }
 
     return (
-        <div className='card-container my-3 w-72 bg-white dark:bg-lighter rounded-xl overflow-hidden relative'>
+        <div className='card-container my-3 w-64 bg-white dark:bg-lighter rounded-xl overflow-hidden relative'>
             <div className='w-full flex flex-col'>
                 <div>
                     <img src={character.image} className='mb-1 w-full h-full object-cover' alt='Character' />
@@ -20,7 +21,7 @@ function CharacterCard({ character }) {
                 <div className='flex justify-between'>
                     <div className='ml-2'>
                         <div className='flex items-center'>
-                            <StarRating/>
+                            <HeartRating />
                             <p className='text-gray-700 dark:text-zinc-400 ml-2'>4.5</p>
                         </div>
                         <h1 className='text-gray-700 dark:text-zinc-200 text-2xl font-bold'>{character.name}</h1>
@@ -28,7 +29,8 @@ function CharacterCard({ character }) {
                     </div>
                     <div>
                         <FaPlus onMouseEnter={toggleToolTip} onMouseLeave={toggleToolTip} className='mt-0.5 mr-2 fa-md text-gray-700 dark:text-zinc-400 dark:hover:text-zinc-200 hover:text-gray-500'/>
-                        <div className={`absolute border ${isTooltipVisible ? 'block' : 'hidden'} top-64 right-1 p-1 px-2 rounded-md text-sm font-semibold bg-white dark:bg-lighter dark:text-zinc-200 text-gray-700`}>Add to collection</div>
+                        <div className={`absolute ${isTooltipVisible ? 'block' : 'hidden'} top-56 right-1 p-1 px-2 rounded-md text-sm font-semibold bg-white dark:bg-lighter dark:text-zinc-200 text-gray-700`}>
+                        Add to <PiCardsBold className='inline-block'/></div>
                     </div>
                 </div>
             </div>

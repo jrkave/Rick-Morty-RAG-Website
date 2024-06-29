@@ -3,16 +3,19 @@ import useDarkMode from '../hooks/useDarkMode';
 import { FaMoon, FaSun } from 'react-icons/fa';
 import { TbUfo } from 'react-icons/tb';
 import { useAuth } from '../context/AuthProvider';
-import { FaAngleDown } from 'react-icons/fa6';
+import { FaAngleDown, FaE } from 'react-icons/fa6';
+import { FaEllipsisVertical } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
 
 const NavBar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
     const [dropdownOpen, setDropdownOpen] = useState(false);
+    const [ellipsisOpen, setEllipsisOpen] = useState(false);
     const { isAuthorized, logout } = useAuth();
 
     const toggleMenu = () => setMenuOpen(!menuOpen);
     const toggleDropDown = () => setDropdownOpen(!dropdownOpen);
+    const toggleEllipsis = () => setEllipsisOpen(!ellipsisOpen);
 
     // Monitors screen size and closes hamburger menu if screen size > sm
     useEffect(() => {
@@ -54,9 +57,6 @@ const NavBar = () => {
             </div>
             <div className={`px-2 pt-2 pb-4 sm:block ${menuOpen ? 'block' : 'hidden'} sm:flex sm:p-0`}>
                 <Link to='/' className='block px-2 py-1 font-semibold hover:bg-zinc-200 dark:hover:bg-lightest rounded-md text-green-600 dark:text-green-500'>Home</Link>
-                {isAuthorized ?
-                    <Link to='/profile' className='block mt-1 px-2 py-1 font-semibold text-gray-700 hover:bg-zinc-200 dark:text-zinc-100 dark:hover:bg-lightest rounded-md sm:mt-0 sm:ml-2 hover:text-green-600 hover:dark:text-green-500'>Profile</Link> : <></>
-                }
                 <Link to='/characters' className='block mt-1 px-2 py-1 font-semibold text-gray-700 hover:bg-zinc-200 dark:text-zinc-100 dark:hover:bg-lightest rounded-md sm:mt-0 sm:ml-2 hover:text-green-600 hover:dark:text-green-500'>Characters</Link>
                 {/* Dropdown above 'sm' sizes */}
                 <div className={`${!menuOpen ? 'block' : 'hidden'} relative block mt-1 px-2 py-1 w-28 font-semibold text-gray-700 hover:bg-zinc-200 dark:text-zinc-100 dark:hover:bg-lightest rounded-md sm:mt-0 sm:ml-2 hover:text-green-600 hover:dark:text-green-500`}>
@@ -75,7 +75,6 @@ const NavBar = () => {
                 </div>
                 {/* No dropdown for 'sm' size */}
                 <div className={`${menuOpen ? 'block' : 'hidden'}`}>
-                    <a href='#' className='block mt-1 px-2 py-1 font-semibold text-gray-700 hover:bg-zinc-200 dark:text-zinc-100 dark:hover:bg-lightest rounded-md sm:mt-0 sm:ml-2 hover:text-green-600 hover:dark:text-green-500'>Episodes</a>
                     <div>
                         <Link to='/episodes/all' onClick={toggleMenu} className='block px-2 py-1 ml-3 rounded-md font-semibold text-gray-600 hover:bg-zinc-200 dark:text-zinc-400 dark:hover:bg-lightest hover:text-green-600 hover:dark:text-green-500'>All</Link>
                         <Link to='/episodes/season_1' onClick={toggleMenu} className='block px-2 py-1 ml-3 rounded-md font-semibold text-gray-600 hover:bg-zinc-200 dark:text-zinc-400 dark:hover:bg-lightest hover:text-green-600 hover:dark:text-green-500'>Season 1</Link>
@@ -86,11 +85,26 @@ const NavBar = () => {
                     </div>
                 </div>
                 <Link to='/chat' className='block mt-1 px-2 py-1 font-semibold text-gray-700 hover:bg-zinc-200 dark:text-zinc-100 dark:hover:bg-lightest rounded-md sm:mt-0 sm:ml-2 hover:text-purple-600 hover:dark:text-purple-500'>Chat</Link>
-                {isAuthorized ? 
-                    <Link to='/logout' className='block mt-1 px-2 py-1 font-semibold text-gray-700 hover:bg-zinc-200 dark:text-zinc-100 dark:hover:bg-lightest rounded-md sm:mt-0 sm:ml-2 hover:text-green-600 hover:dark:text-green-500'>Logout</Link> :
-                    <Link to='/login' className='block mt-1 px-2 py-1 font-semibold text-gray-700 hover:bg-zinc-200 dark:text-zinc-100 dark:hover:bg-lightest rounded-md sm:mt-0 sm:ml-2 hover:text-green-600 hover:dark:text-green-500'>Login</Link> 
+                {isAuthorized && menuOpen ?
+                    <div>
+                        <Link to='/profile' className='block mt-1 px-2 py-1 mr-2 font-semibold text-gray-700 hover:bg-zinc-200 dark:text-zinc-100 dark:hover:bg-lightest rounded-md sm:mt-0 sm:ml-2 hover:text-green-600 hover:dark:text-green-500'>Profile</Link>
+                        <div className='block mt-1 px-2 py-1 mr-2 font-semibold text-gray-700 hover:bg-zinc-200 dark:text-zinc-100 dark:hover:bg-lightest rounded-md sm:mt-0 sm:ml-2 hover:text-green-600 hover:dark:text-green-500'>Card Collection</div>
+                        <Link to='/logout' className='block mt-1 px-2 py-1 font-semibold text-gray-700 hover:bg-zinc-200 dark:text-zinc-100 dark:hover:bg-lightest rounded-md sm:mt-0 sm:ml-2 hover:text-green-600 hover:dark:text-green-500'>Logout</Link>
+                    </div> : <></>
                 }
                 <ThemeIcon />
+                {isAuthorized ? 
+                    <div className={`dropdown ${menuOpen ? 'hidden' : 'block'}`}>
+                        <FaEllipsisVertical size='30' onClick={toggleEllipsis} className='block mt-1 px-2 py-1 font-semibold text-gray-700 hover:bg-zinc-200 dark:text-zinc-100 dark:hover:bg-lightest rounded-md sm:mt-0 sm:ml-2 hover:text-green-600 hover:dark:text-green-500'/>
+                        <div className={`${ellipsisOpen ? 'block' : 'hidden'} absolute bg-white dark:bg-lighter mt-1 mr-4 rounded-b-md py-2 right-0 top-12 w-52 z-10`}>
+                            <Link to='/profile' className='block mt-1 px-2 py-1 mr-2 font-semibold text-gray-700 hover:bg-zinc-200 dark:text-zinc-100 dark:hover:bg-lightest rounded-md sm:mt-0 sm:ml-2 hover:text-green-600 hover:dark:text-green-500 bg-zinc-100 dark:bg-darker my-1 shadow-md'>Profile</Link>
+                            <div className='block mt-1 px-2 py-1 mr-2 font-semibold text-gray-700 hover:bg-zinc-200 dark:text-zinc-100 dark:hover:bg-lightest rounded-md sm:mt-0 sm:ml-2 hover:text-green-600 hover:dark:text-green-500 bg-zinc-100 dark:bg-darker my-1 shadow-md'>Card Collection</div>
+                            <Link to='/logout' className='block mt-1 px-2 py-1 mr-2 font-semibold text-gray-700 hover:bg-zinc-200 dark:text-zinc-100 dark:hover:bg-lightest rounded-md sm:mt-0 sm:ml-2 hover:text-green-600 hover:dark:text-green-500 bg-zinc-100 dark:bg-darker my-1 shadow-md'>Logout</Link>
+                        </div>
+                    </div>
+                     :
+                    <div></div>
+                }
             </div>
         </header>
         </>

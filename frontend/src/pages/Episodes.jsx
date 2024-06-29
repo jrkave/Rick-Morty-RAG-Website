@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import EpisodeCard from '../components/EpisodeCard';
+import SearchBar from '../components/SearchBar';
 
 function Episodes({ season }) {
     const baseUrl = 'https://rickandmortyapi.com/api/episode/?page=1';
@@ -69,8 +70,8 @@ function Episodes({ season }) {
     }
 
     return (
-        <div className='h-screen'>
-            <div className='grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-2 justify-items-center m-4'>
+        <div className='h-screen my-4'>
+            <div className='grid grid-cols-1 lg-0:grid-cols-2 xl-1:grid-cols-3 gap-x-8 gap-y-2 justify-items-center m-4'>
                 {episodes.map(episode => (
                     <EpisodeCard key={episode.id} episode={episode}></EpisodeCard>
                 ))}

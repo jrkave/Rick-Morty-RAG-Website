@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import { FaAngleDown } from 'react-icons/fa6';
+import { PiCardsBold } from 'react-icons/pi';
 import { FaPlus } from 'react-icons/fa6';
 import StarRating from './StarRating';
 
 function EpisodeCard({episode}) {
-    const [isOpen, setIsOpen] = useState(false);
-    const openDropDown = () => setIsOpen(!isOpen);
+    const [isTooltipVisible, setIsTooltipVisible] = useState(false);
+    const toggleToolTip = () => setIsTooltipVisible(!isTooltipVisible);
       
     function parseEpisodeString(apiEpisode) {
         // Format of apiEpisode: 'S00E00'
@@ -41,39 +41,34 @@ function EpisodeCard({episode}) {
     }
 
     return (
-        <div className='container bg-white dark:bg-lighter rounded-md m-2 flex flex-col justify-between'>
-            <div>
-                <img src={`/images/ep_${episode.id}.webp`} alt={`Episode ${episode.id}`} className='rounded-md' />
-                <div className='flex items-center justify-between mt-1'>
-                    <div className='flex items-center ml-2'>
-                        <StarRating />
-                        <p className='text-gray-700 dark:text-zinc-400 ml-2'>4.5</p>
-                    </div>
-                    <FaPlus className='mr-2 text-gray-700 hover:text-gray-500 dark:text-zinc-400 dark:hover:text-zinc-200 fa-md' />
+        <div className='card-container bg-white dark:bg-lighter rounded-md my-2 flex flex-col justify-between w-120'>
+            <div className='w-full flex flex-col relative'>
+                <div>
+                    <img src={`/images/ep_${episode.id}.webp`} alt={`Episode ${episode.id}`} className='rounded-md'/>
                 </div>
-                <h1 className='mx-2 pt-1 text-gray-700 dark:text-zinc-200 text-xl font-bold'>
-                    {`Season ${parseEpisodeString(episode.episode).season} Episode ${parseEpisodeString(episode.episode).episode}: `}
-                    <span className="dark:text-zinc-400">{`"${episode.name}"`}</span>
-                </h1>
+                <div className='flex justify-between'>
+                    <div className='m-1'>
+                        <div className='flex items-center ml-1'>
+                            <StarRating />
+                            <p className='text-gray-700 dark:text-zinc-400 ml-2 '>4.5</p>
+                        </div>
+                        <h1 className='pt-1 ml-1 text-gray-700 dark:text-zinc-200 text-xl font-bold'>
+                        {`Season ${parseEpisodeString(episode.episode).season} Episode ${parseEpisodeString(episode.episode).episode}: `}
+                        <span className="dark:text-zinc-400">{`"${episode.name}"`}</span>
+                        </h1>
+                    </div>
+                    <div>
+                        <FaPlus onMouseEnter={toggleToolTip} onMouseLeave={toggleToolTip} className='mt-2 mr-2 fa-md text-gray-700 dark:text-zinc-400 dark:hover:text-zinc-200 hover:text-gray-500'/>
+                        <div className={`absolute ${isTooltipVisible ? 'block' : 'hidden'} top-60 right-1 p-1 px-2 rounded-md text-sm font-semibold bg-white dark:bg-lighter dark:text-zinc-200 text-gray-700`}>
+                            Add to <PiCardsBold className='inline-block'/></div>
+                    </div>
+                </div>
             </div>
-            <div className='flex justify-between items-center mt-4 px-2 pb-1 relative'>
-                <div className='text-gray-700 mb-2'>
-                    <span className='font-bold dark:text-amber-500'>Aired on: </span>
+                <div className='mx-2 mb-2'>
+                    <span className='font-bold dark:text-zinc-400'>Aired on: </span>
                     <span className='dark:text-zinc-100'>{episode.air_date}</span>
                 </div>
-                <div>
-                    <FaAngleDown
-                        type='button'
-                        className='text-gray-700 hover:text-gray-500 dark:text-zinc-400 dark:hover:text-zinc-200 fa-md'
-                        onClick={openDropDown}
-                    />
-                </div>
-                <div className={`${isOpen ? 'block' : 'hidden'} text-gray-700 absolute left-0 top-7 bg-white dark:bg-lighter rounded-md pl-2 pb-2`}>
-                    <span className='dark:text-amber-500 font-semibold'>Featured Characters: </span>
-                    <span className='dark:text-zinc-100'>{editCharactersString(episode.characters)}</span>
-                </div>
             </div>
-        </div>
     );
 };
 
