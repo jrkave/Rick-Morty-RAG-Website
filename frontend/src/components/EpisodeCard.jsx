@@ -50,7 +50,7 @@ function EpisodeCard({episode}) {
                     <div className='m-1'>
                         <div className='flex items-center ml-1'>
                             <StarRating />
-                            <p className='text-gray-700 dark:text-zinc-400 ml-2 '>4.5</p>
+                            <p className='text-gray-700 dark:text-zinc-400 ml-2 text-base'>4.3</p>
                         </div>
                         <h1 className='pt-1 ml-1 text-gray-700 dark:text-zinc-200 text-xl font-bold'>
                         {`Season ${parseEpisodeString(episode.episode).season} Episode ${parseEpisodeString(episode.episode).episode}: `}
@@ -58,15 +58,15 @@ function EpisodeCard({episode}) {
                         </h1>
                     </div>
                     <div>
-                        <FaPlus onMouseEnter={toggleToolTip} onMouseLeave={toggleToolTip} className='mt-2 mr-2 fa-md text-gray-700 dark:text-zinc-400 dark:hover:text-zinc-200 hover:text-gray-500'/>
+                        <FaPlus onMouseEnter={toggleToolTip} onMouseLeave={toggleToolTip} className='mt-2 mr-2 text-base text-gray-700 dark:text-zinc-400 dark:hover:text-zinc-200 hover:text-gray-500'/>
                         <div className={`absolute ${isTooltipVisible ? 'block' : 'hidden'} top-60 right-1 p-1 px-2 rounded-md text-sm font-semibold bg-white dark:bg-lighter dark:text-zinc-200 text-gray-700`}>
                             Add to <PiCardsBold className='inline-block'/></div>
                     </div>
                 </div>
             </div>
                 <div className='mx-2 mb-2'>
-                    <span className='font-bold dark:text-zinc-400'>Aired on: </span>
-                    <span className='dark:text-zinc-100'>{episode.air_date}</span>
+                    <span className='font-bold dark:text-zinc-400 text-base'>Aired on: </span>
+                    <span className='dark:text-zinc-100 text-base'>{episode.air_date}</span>
                 </div>
             </div>
     );

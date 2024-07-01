@@ -92,6 +92,9 @@ const NavBar = () => {
                         <Link to='/logout' className='block mt-1 px-2 py-1 font-semibold text-gray-700 hover:bg-zinc-200 dark:text-zinc-100 dark:hover:bg-lightest rounded-md sm:mt-0 sm:ml-2 hover:text-green-600 hover:dark:text-green-500'>Logout</Link>
                     </div> : <></>
                 }
+                { !isAuthorized ? 
+                <Link to='/login' className='block mt-1 px-2 py-1 font-semibold text-gray-700 hover:bg-zinc-200 dark:text-zinc-100 dark:hover:bg-lightest rounded-md sm:mt-0 sm:ml-2 hover:text-green-600 hover:dark:text-green-500'>Login</Link> : <></>
+                }
                 <ThemeIcon />
                 {isAuthorized ? 
                     <div className={`dropdown ${menuOpen ? 'hidden' : 'block'}`}>

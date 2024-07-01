@@ -22,7 +22,7 @@ function CharacterCard({ character }) {
                     <div className='ml-2'>
                         <div className='flex items-center'>
                             <HeartRating />
-                            <p className='text-gray-700 dark:text-zinc-400 ml-2'>4.5</p>
+                            <p className='text-gray-700 dark:text-zinc-400 ml-2'>3.7</p>
                         </div>
                         <h1 className='text-gray-700 dark:text-zinc-200 text-2xl font-bold'>{character.name}</h1>
                         <p className='text-gray-700 dark:text-zinc-400 text-sm'><CircleStatus status={character.status} />{capitalizeFirstLetter(character.status)} - {capitalizeFirstLetter(character.species)}</p>
